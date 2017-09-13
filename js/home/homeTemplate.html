@@ -1,7 +1,7 @@
 <div class="hero" layout="column" layout-align="space-between">
     <div>
         <h1>I want to watch a movie.</h1>
-        <h2>Find one.</h2>
+        <h2>Find one. <a sref="vote">Personalize it.</a></h2>
     </div>
     <div class="text-center">
         <h2>Most Popular</h2>
@@ -10,8 +10,8 @@
         </md-button>
     </div>
 </div>
-<div layout="row" layout-xs="column" layout-align="space-around" layout-wrap id="recommendation-container">
-    <md-card md-theme="dark-grey" ng-repeat="movie in popular" flex="30">
+<div layout="row" layout-align="space-around" layout-wrap id="recommendation-container">
+    <md-card ng-repeat="movie in popular" flex="30" flex-sm="40" flex-xs="80">
         <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
         <md-card-title>
             <md-card-title-text>
