@@ -7,17 +7,12 @@ angular
       scope: {
         movie: "=",
         showActions: "=",
-        action: "&"
+        action: "&",
+        index: "="
       },
       link: function(scope, elements, attributes) {
         scope.imageBaseUrl = searchService.imageBaseUrl;
         scope.imageSize = searchService.imageSize;
-        // searchService.apiConfiguration().then(function() {
-        //   console.log(searchService.imageBaseUrl);
-        //   console.log(searchService.imageSize);
-        //   scope.imageBaseUrl = searchService.imageBaseUrl;
-        //   scope.imageSize = searchService.imageSize;
-        // });
       }
     };
   });

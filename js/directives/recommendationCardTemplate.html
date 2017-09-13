@@ -6,12 +6,12 @@
         </md-card-title-text>
     </md-card-title>
     <md-card-actions layout="row" layout-align="space-between center" ng-show="showActions">
-        <md-button class="md-warn" style="width: 100%" ng-click="action()">
+        <md-button class="md-warn" style="width: 100%" ng-click="action({choice: 'no', movieId: index})">
             <md-icon>
                 &#xE8DB;
             </md-icon>
         </md-button>
-        <md-button class="md-accent" style="width: 100%" ng-click="action()">
+        <md-button class="md-accent" style="width: 100%" ng-click="action({choice: 'yes', movieId: index})">
             <md-icon>
                 &#xE8DC;
             </md-icon>

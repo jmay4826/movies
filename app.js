@@ -20,7 +20,6 @@ angular
         resolve: {
           random: function(searchService) {
             return searchService.discover("").then(function(response) {
-              console.log(response);
               return response;
             });
           },

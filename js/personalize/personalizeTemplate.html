@@ -2,6 +2,21 @@
     <h1>Personalize your recommendations.</h1>
     <h2>Do you like this movie?</h2>
 </div>
-<div layout="row" layout-align="space-around" layout-wrap id="recommendation-container">
-    <recommendation-card ng-repeat="movie in random" movie="movie" show-actions="showActions" action="action()"></recommendation-card>
+<div layout="row" layout-align="start start">
+    <div layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
+        <h2>Disliked</h2>
+        <recommendation-card ng-repeat=" movie in disliked track by $index " index="$index " movie="movie " show-actions=" "></recommendation-card>
+
+    </div>
+    <div layout="row" layout-align="space-around" layout-wrap id="recommendation-container" flex="50">
+        <recommendation-card ng-repeat="movie in random track by $index " index="$index
+            " movie="movie " show-actions="showActions " action="action(choice, movieId) " ng-hide="movie.alreadyVoted">
+        </recommendation-card>
+    </div>
+    <div layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
+        <h2>Liked</h2>
+        <recommendation-card ng-repeat="movie in liked track by $index" index="$index " movie="movie
+        " show-actions=" "></recommendation-card>
+
+    </div>
 </div>
