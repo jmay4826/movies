@@ -1,0 +1,13 @@
+<div class="hero">
+
+</div>
+<div layout="row" layout-xs="column" layout-align="space-around" layout-wrap class="recommendation-container">
+    <md-card md-theme="dark-grey" ng-repeat="movie in popular" flex="30">
+        <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
+        <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">{{movie.title}}</span>
+            </md-card-title-text>
+        </md-card-title>
+    </md-card>
+</div>
