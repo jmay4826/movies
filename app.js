@@ -6,12 +6,16 @@ angular
       .state("home", {
         url: "/",
         templateUrl: "/js/home/homeTemplate.html",
-        controller: "homeController"
+        controller: "homeController",
+        resolve: {
+          apiConfig: function(searchService) {
+            return searchService.apiConfiguration();
+          }
+        }
       })
       .state("personalize", {
         url: "/personalize",
         templateUrl: "/js/personalize/personalizeTemplate.html",
-        // controller: "homeController"
         controller: "personalizeController",
         resolve: {
           random: function(searchService) {
@@ -19,6 +23,9 @@ angular
               console.log(response);
               return response;
             });
+          },
+          apiConfig: function(searchService) {
+            return searchService.apiConfiguration();
           }
         }
       });

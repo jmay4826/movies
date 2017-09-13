@@ -10,10 +10,14 @@ angular
         action: "&"
       },
       link: function(scope, elements, attributes) {
-        searchService.apiConfiguration().then(function() {
-          scope.imageBaseUrl = searchService.imageBaseUrl;
-          scope.imageSize = searchService.imageSize;
-        });
+        scope.imageBaseUrl = searchService.imageBaseUrl;
+        scope.imageSize = searchService.imageSize;
+        // searchService.apiConfiguration().then(function() {
+        //   console.log(searchService.imageBaseUrl);
+        //   console.log(searchService.imageSize);
+        //   scope.imageBaseUrl = searchService.imageBaseUrl;
+        //   scope.imageSize = searchService.imageSize;
+        // });
       }
     };
   });
