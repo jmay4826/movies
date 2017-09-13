@@ -1,17 +1,14 @@
 angular
   .module("movieApp")
-  .controller("homeController", function($scope, searchService) {
+  .controller("homeController", function($scope, $anchorScroll, searchService) {
+    $scope.scrollToRecommendations = function() {
+      $anchorScroll("recommendation-container");
+    };
     searchService.apiConfiguration().then(function() {
       $scope.imageBaseUrl = searchService.imageBaseUrl;
       $scope.imageSize = searchService.imageSize;
     });
-    $scope.test = "test";
-    console.log(searchService.imageBaseUrl);
-    // $scope.imageBaseUrl = searchService.imageBaseUrl;
-    // $scope.imageSize = searchService.imageSize;
-    searchService.findMoviesBy("211672/videos").then(function(response) {
-      console.log(response);
-    });
+
     searchService
       .findMoviesBy("popular")
       .then(function(response) {

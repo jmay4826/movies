@@ -1,5 +1,8 @@
 .hero {
-  height: 75vh;
+  height: 90vh;
+}
+.text-center {
+  text-align: center;
 }
 /* .recommendation img {
   width: 25%;

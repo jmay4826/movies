@@ -1,7 +1,16 @@
-<div class="hero">
-
+<div class="hero" layout="column" layout-align="space-between">
+    <div>
+        <h1>I want to watch a movie.</h1>
+        <h2>Find one.</h2>
+    </div>
+    <div class="text-center">
+        <h2>Most Popular</h2>
+        <md-button class="md-fab" ng-click="scrollToRecommendations()">
+            <md-icon>&#xE313;</md-icon>
+        </md-button>
+    </div>
 </div>
-<div layout="row" layout-xs="column" layout-align="space-around" layout-wrap class="recommendation-container">
+<div layout="row" layout-xs="column" layout-align="space-around" layout-wrap id="recommendation-container">
     <md-card md-theme="dark-grey" ng-repeat="movie in popular" flex="30">
         <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
         <md-card-title>
