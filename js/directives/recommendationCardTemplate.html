@@ -1,0 +1,20 @@
+<md-card>
+    <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
+    <md-card-title>
+        <md-card-title-text>
+            <span class="md-headline">{{movie.title}}</span>
+        </md-card-title-text>
+    </md-card-title>
+    <md-card-actions layout="row" layout-align="space-between center" ng-show="showActions">
+        <md-button class="md-warn" style="width: 100%" ng-click="action()">
+            <md-icon>
+                &#xE8DB;
+            </md-icon>
+        </md-button>
+        <md-button class="md-accent" style="width: 100%" ng-click="action()">
+            <md-icon>
+                &#xE8DC;
+            </md-icon>
+        </md-button>
+    </md-card-actions>
+</md-card>

@@ -15,4 +15,7 @@ angular.module("movieApp").service("searchService", function($http) {
   this.findMoviesBy = function(selector) {
     return $http.get(apiUrl + "movie/" + selector + apiKey);
   };
+  this.discover = function(options) {
+    return $http.get(apiUrl + "discover/movie" + apiKey + options);
+  };
 });

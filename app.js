@@ -8,10 +8,19 @@ angular
         templateUrl: "/js/home/homeTemplate.html",
         controller: "homeController"
       })
-      .state("search", {
-        url: "/search",
-        templateUrl: "/js/search/searchTemplate.html",
-        controller: "searchController"
+      .state("personalize", {
+        url: "/personalize",
+        templateUrl: "/js/personalize/personalizeTemplate.html",
+        // controller: "homeController"
+        controller: "personalizeController",
+        resolve: {
+          random: function(searchService) {
+            return searchService.discover("").then(function(response) {
+              console.log(response);
+              return response;
+            });
+          }
+        }
       });
   })
   .config(function($mdThemingProvider) {
