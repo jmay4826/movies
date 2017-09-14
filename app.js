@@ -19,9 +19,11 @@ angular
         controller: "personalizeController",
         resolve: {
           random: function(searchService) {
-            return searchService.discover("").then(function(response) {
-              return response;
-            });
+            return searchService
+              .discover("&primary_release_date.lte=2017-01-01")
+              .then(function(response) {
+                return response;
+              });
           },
           apiConfig: function(searchService) {
             return searchService.apiConfiguration();
