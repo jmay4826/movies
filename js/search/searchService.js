@@ -2,8 +2,8 @@ angular.module("movieApp").service("searchService", function($http) {
   var that = this;
   var apiUrl = "https://api.themoviedb.org/3/";
   var apiKey = "?api_key=1c18362aec433105dd7c8fc4efb15a14";
-  // this.imageBaseUrl = "http://image.tmdb.org/t/p/";
-  // this.imageSize = "w780";
+  // this.imageBaseUrl = "http://image.tmdb.org/t/p/"; //each view queries this as a resolve, here for reference
+  // this.imageSize = "w780"; //each view queries this as a resolve, here for reference
 
   this.apiConfiguration = function() {
     return $http
@@ -28,22 +28,31 @@ angular.module("movieApp").service("searchService", function($http) {
     return $http.get(apiUrl + "movie/" + id + "/recommendations" + apiKey);
   };
 
-  this.discover = function(options) {
+  this.discover = function(options, extra) {
     return $http
       .get(apiUrl + "discover/movie" + apiKey + options)
       .then(function(response) {
-        response.data.results = response.data.results.map(function(movie) {
-          // console.log(movie);
-          $http
-            .get(apiUrl + "movie/" + movie.id + "/credits" + apiKey)
-            .then(function(detailResponse) {
-              movie.cast = detailResponse.data.cast.map(function(actor) {
-                return actor.name;
+        if (extra) {
+          response.data.results = response.data.results.map(function(movie) {
+            // console.log(movie);
+            $http
+              .get(apiUrl + "movie/" + movie.id + "/credits" + apiKey)
+              .then(function(detailResponse) {
+                movie.cast = [];
+                for (var i = 0; i < 10; i++) {
+                  if (detailResponse.data.cast[i]) {
+                    movie.cast.push(detailResponse.data.cast[i].name);
+                  }
+                }
+                // movie.cast = detailResponse.data.cast.map(function(actor) {
+                //   return actor.name;
+                // });
+                console.log(movie.cast);
+                return detailResponse;
               });
-              return detailResponse;
-            });
-          return movie;
-        });
+            return movie;
+          });
+        }
         return response;
       });
   };

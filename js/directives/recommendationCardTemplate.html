@@ -3,6 +3,10 @@
     <md-card-title>
         <md-card-title-text>
             <span ui-sref="detail({id: movie.id})" class="md-headline" style="cursor: pointer">{{movie.title}}</span>
+            <div layout="column" ng-show="movie.dummy">
+                <md-button ng-click="action({choice: 'recommend'})">Recommend</md-button>
+                <md-button ng-click="action({choice: 'personalize'})">Keep personalizing.</md-button>
+            </div>
         </md-card-title-text>
     </md-card-title>
     <md-card-actions layout="row" layout-align="space-between center" ng-show="showActions">
