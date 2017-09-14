@@ -1,8 +1,11 @@
 <md-card>
-    <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
+    <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + (movie.backdrop_path || movie.poster_path)}}" alt="">
     <md-card-title>
         <md-card-title-text>
-            <span ui-sref="detail({id: movie.id})" class="md-headline" style="cursor: pointer">{{movie.title}}</span>
+            <span class="md-headline">{{movie.title}}</span>
+            <span ui-sref="detail({id: movie.id})" class="md-subhead" style="cursor: pointer; padding: 0;">(go to details)</span>
+            <span class="md-subhead" ng-show="movie.recommendation" style="padding: 0">because you liked: {{movie.likedGenre}}</span>
+            <span></span>
             <div layout="column" ng-show="movie.dummy">
                 <md-button ng-click="action({choice: 'recommend'})">Recommend</md-button>
                 <md-button ng-click="action({choice: 'personalize'})">Keep personalizing.</md-button>

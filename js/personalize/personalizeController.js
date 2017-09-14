@@ -25,20 +25,32 @@ angular
 
         console.log(genres, cast);
         var mostImportant = { amount: 0, content: "" };
+        var secondImportant = { amount: 0, content: "" };
         for (var key in genres) {
           if (genres[key] > mostImportant.amount) {
             mostImportant.amount = genres[key];
             mostImportant.content = key;
+          } else if (genres[key] > secondImportant.amount) {
+            secondImportant.amount = genres[key];
+            secondImportant.content = key;
           }
         }
         console.log(
           searchService
-            .discover("&with_genres=" + mostImportant.content)
+            .discover(
+              "&primary_release_date.lte=2017-04-01&with_genres=" +
+                mostImportant.content +
+                "|" +
+                secondImportant.content
+            )
             .then(function(response) {
               response = response.data.results.filter(function(movie) {
                 return $scope.randomIds.indexOf(movie.id) === -1;
               });
               $scope.recommendedMovie = response[0];
+              $scope.recommendedMovie.likedGenre =
+                searchService.genres[mostImportant.content];
+              $scope.recommendedMovie.recommendation = true;
             })
         );
         console.log(mostImportant);

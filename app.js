@@ -20,7 +20,7 @@ angular
         resolve: {
           random: function(searchService) {
             return searchService
-              .discover("&primary_release_date.lte=2015-01-01", true)
+              .discover("&vote_average.gte=4.9", true)
               .then(function(response) {
                 return response;
               });
