@@ -27,6 +27,19 @@ angular
             return searchService.apiConfiguration();
           }
         }
+      })
+      .state("detail", {
+        url: "/detail/:id",
+        templateUrl: "/js/detail/detailTemplate.html",
+        controller: "detailController",
+        resolve: {
+          movie: function(searchService, $stateParams) {
+            return searchService.findMovieDetails($stateParams.id);
+          },
+          apiConfig: function(searchService) {
+            return searchService.apiConfiguration();
+          }
+        }
       });
   })
   .config(function($mdThemingProvider) {

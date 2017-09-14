@@ -1,0 +1,24 @@
+<div class="detail-hero" ng-style="{'background-image': 'url({{imageBaseUrl + imageSize + movie.backdrop_path}})'}" layout="column"
+    layout-align="end">
+    <div>
+        <h1><span style="background-color: black">{{movie.title}}</span></h1>
+        <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
+    </div>
+</div>
+<div>
+    <md-button ng-click="getSimilar(movie.id)">Get Similar</md-button>
+    <div ng-repeat="movie in similar" class="similar-scroller">{{movie}}</div>
+</div>
+<div>
+    <ul>
+        <li>Popularity: {{movie.popularity}}</li>
+        <li>Release Date: {{movie.release_date}}</li>
+        <li>Runtime: {{movie.runtime}}</li>
+        <li>Tagline: {{movie.tagline}}</li>
+        <li>Vote Average: {{movie.vote_average}}</li>
+        <li>Overview: {{movie.overview}}</li>
+        <ul>Reviews:
+            <li ng-repeat="review in movie.reviews.results">{{review.content}} - {{review.author}}</li>
+        </ul>
+    </ul>
+</div>

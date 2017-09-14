@@ -19,7 +19,32 @@ angular.module("movieApp").service("searchService", function($http) {
   this.findMoviesBy = function(selector) {
     return $http.get(apiUrl + "movie/" + selector + apiKey);
   };
+  this.findMovieDetails = function(id) {
+    return $http.get(
+      apiUrl + "movie/" + id + apiKey + "&append_to_response=reviews"
+    );
+  };
+  this.getSimilar = function(id) {
+    return $http.get(apiUrl + "movie/" + id + "/recommendations" + apiKey);
+  };
+
   this.discover = function(options) {
-    return $http.get(apiUrl + "discover/movie" + apiKey + options);
+    return $http
+      .get(apiUrl + "discover/movie" + apiKey + options)
+      .then(function(response) {
+        response.data.results = response.data.results.map(function(movie) {
+          // console.log(movie);
+          $http
+            .get(apiUrl + "movie/" + movie.id + "/credits" + apiKey)
+            .then(function(detailResponse) {
+              movie.cast = detailResponse.data.cast.map(function(actor) {
+                return actor.name;
+              });
+              return detailResponse;
+            });
+          return movie;
+        });
+        return response;
+      });
   };
 });

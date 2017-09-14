@@ -2,7 +2,7 @@
     <img class="md-card-image" ng-src="{{imageBaseUrl + imageSize + movie.backdrop_path}}" alt="">
     <md-card-title>
         <md-card-title-text>
-            <span class="md-headline">{{movie.title}}</span>
+            <span ui-sref="detail({id: movie.id})" class="md-headline" style="cursor: pointer">{{movie.title}}</span>
         </md-card-title-text>
     </md-card-title>
     <md-card-actions layout="row" layout-align="space-between center" ng-show="showActions">

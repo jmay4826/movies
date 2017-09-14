@@ -1,8 +1,17 @@
 .hero {
   height: 90vh;
 }
+.detail-hero h1 {
+  padding: 0;
+  margin: 0;
+}
 .text-center {
   text-align: center;
+}
+
+.detail-hero {
+  height: 500px;
+  background-size: cover;
 }
 /* .recommendation img {
   width: 25%;
