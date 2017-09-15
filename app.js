@@ -5,7 +5,7 @@ angular
     $stateProvider
       .state("home", {
         url: "/",
-        templateUrl: "/js/home/homeTemplate.html",
+        templateUrl: "js/home/homeTemplate.html",
         controller: "homeController",
         resolve: {
           apiConfig: function(searchService) {
@@ -15,7 +15,7 @@ angular
       })
       .state("personalize", {
         url: "/personalize",
-        templateUrl: "/js/personalize/personalizeTemplate.html",
+        templateUrl: "js/personalize/personalizeTemplate.html",
         controller: "personalizeController",
         resolve: {
           random: function(searchService) {
@@ -32,7 +32,7 @@ angular
       })
       .state("detail", {
         url: "/detail/:id",
-        templateUrl: "/js/detail/detailTemplate.html",
+        templateUrl: "js/detail/detailTemplate.html",
         controller: "detailController",
         resolve: {
           movie: function(searchService, $stateParams) {
