@@ -6,6 +6,8 @@ angular
     random,
     personalizeService
   ) {
+    $scope.imageBaseUrl = searchService.imageBaseUrl;
+    $scope.imageSize = searchService.imageSize;
     $scope.recommendedMovie = {
       title: "Ready for your recommendation?",
       dummy: true

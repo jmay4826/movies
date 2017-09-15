@@ -1,24 +1,78 @@
 <div class="detail-hero" ng-style="{'background-image': 'url({{imageBaseUrl + imageSize + movie.backdrop_path}})'}" layout="column"
     layout-align="end">
-    <div>
-        <h1><span style="background-color: black">{{movie.title}}</span></h1>
-        <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
+    <div layout="row" layout-align="space-between end">
+        <div>
+            <h1><span style="background-color: black">{{movie.title}}</span></h1>
+            <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
+        </div>
+        <div>
+            <md-chips ng-model="movie.genres" readonly="true">
+                <md-chip-template>{{$chip.name}}</md-chip-template>
+            </md-chips>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="similar-bar">
+    <md-button ng-click="getSimilar(movie.id)">Similar Movies</md-button>
+</div>
+<div style="overflow: hidden">
+    <div ng-style="scrollerStyle" style="display: flex; flex-direction: row; align-items: center; transition: 200ms; width: 100vw; height: 180px; overflow:visible;">
+        <div ng-repeat=" movie in similar " class="similar-scroller ">
+            <div ui-sref="detail({id: movie.id}) " class="similar-thumbnail " ng-style="{ 'background-image':
+    'linear-gradient(black, transparent), url({{imageBaseUrl + imageSize + movie.poster_path}})'} ">
+                {{movie.title}}
+            </div>
+
+            <!-- <img ng-src="{{imageBaseUrl + imageSize + movie.poster_path}} " alt="{{movie.title}} " class="similar-thumbnail ">{{movie.title}} -->
+        </div>
     </div>
 </div>
 <div>
-    <md-button ng-click="getSimilar(movie.id)">Get Similar</md-button>
-    <div ng-repeat="movie in similar" class="similar-scroller">{{movie}}</div>
-</div>
-<div>
-    <ul>
+
+
+    <div ng-cloak>
+        <md-content>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="info">
+                    <md-content class="md-padding">
+                        <h1 class="md-subheader">Released on {{movie.release_date}}</h1>
+                        <p>{{movie.overview}}</p>
+                    </md-content>
+                </md-tab>
+                <md-tab label="reviews">
+                    <md-content class="md-padding">
+                        <div layout="column" layout-align="center center">
+                            <!-- <md-progress-circular md-mode="determinate" value="{{(movie.vote_average / 10) * 100}}"></md-progress-circular> -->
+                            <div><span class="md-display-2">{{movie.vote_average}}</span><span class="md-subhead">/5</span></div>
+                            <div style="padding: 0">
+                                <md-icon ng-repeat="star in movie.ratingStars track by $index">{{star}}</md-icon>
+                            </div>
+                            <div class="md-subhead">average rating</div>
+                            <div class="md-subhead">(with {{movie.vote_count}} votes)</div>
+
+
+
+
+                        </div>
+                        <md-card ng-repeat="review in movie.reviews.results ">
+                            <md-card-title>{{review.author}}</md-card-title>
+                            <md-card-content>
+                                {{review.content}}
+                            </md-card-content>
+                        </md-card>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+        </md-content>
+    </div>
+    <!-- <ul>
         <li>Popularity: {{movie.popularity}}</li>
         <li>Release Date: {{movie.release_date}}</li>
         <li>Runtime: {{movie.runtime}}</li>
-        <li>Tagline: {{movie.tagline}}</li>
         <li>Vote Average: {{movie.vote_average}}</li>
         <li>Overview: {{movie.overview}}</li>
-        <ul>Reviews:
-            <li ng-repeat="review in movie.reviews.results">{{review.content}} - {{review.author}}</li>
-        </ul>
-    </ul>
+
+    </ul> -->
 </div>

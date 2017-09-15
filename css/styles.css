@@ -12,7 +12,32 @@
 .detail-hero {
   height: 500px;
   background-size: cover;
+  background-position: 50% 0%;
 }
+
+.similar-bar {
+  width: 100%;
+  text-align: center;
+}
+.similar-scroller {
+  height: 150px;
+  width: 100vw;
+  transition: 200ms;
+}
+.similar-thumbnail {
+  height: 100%;
+  width: 100px;
+  background-size: cover;
+  font-size: 0.9em;
+  text-align: center;
+  transition: all 0.15s ease-in-out;
+  overflow: hidden;
+}
+
+.similar-thumbnail:hover {
+  transform: scale(1.2);
+}
+
 /* .recommendation img {
   width: 25%;
 } */
