@@ -38,6 +38,12 @@
   transform: scale(1.2);
 }
 
+.trailer {
+  position: absolute;
+  width: 100vw;
+  height: 500px;
+}
+
 /* .recommendation img {
   width: 25%;
 } */

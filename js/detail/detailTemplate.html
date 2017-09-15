@@ -1,9 +1,17 @@
 <div class="detail-hero" ng-style="{'background-image': 'url({{imageBaseUrl + imageSize + movie.backdrop_path}})'}" layout="column"
     layout-align="end">
-    <div layout="row" layout-align="space-between end">
+    <iframe class="trailer" id="ytplayer" type="text/html" ng-src="{{movie.videos.results[0].key}}" frameborder="0" ng-style="trailerStyle[showTrailer]"></iframe>
+    <div layout="column" layout-align="center center">
+        <md-button class="md-raised" ng-click="showTrailer=true">
+            <md-icon>play_arrow</md-icon>
+        </md-button>
+        <p>Play Trailer</p>
+    </div>
+    <div layout="row" layout-align="space-between end" ng-style="trailerStyle[!showTrailer]">
         <div>
             <h1><span style="background-color: black">{{movie.title}}</span></h1>
             <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
+            <!-- <h2><span style="background-color: black">"{{youtubeUrl}} {{movie.videos.results[0].id}}"</span></h2> -->
         </div>
         <div>
             <md-chips ng-model="movie.genres" readonly="true">

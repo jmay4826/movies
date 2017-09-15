@@ -39,7 +39,7 @@ angular.module("movieApp").service("searchService", function($http) {
   };
   this.findMovieDetails = function(id) {
     return $http.get(
-      apiUrl + "movie/" + id + apiKey + "&append_to_response=reviews"
+      apiUrl + "movie/" + id + apiKey + "&append_to_response=reviews,videos"
     );
   };
   this.getSimilar = function(id) {

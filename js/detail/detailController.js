@@ -4,9 +4,21 @@ angular
     $scope,
     searchService,
     movie,
-    $stateParams
+    $stateParams,
+    $sce
   ) {
     $scope.movie = movie.data;
+    $scope.movie.videos.results[0].key = $sce.trustAsResourceUrl(
+      "https://www.youtube.com/embed/" + $scope.movie.videos.results[0].key
+    );
+    $scope.trailerStyle = {
+      true: {
+        "z-index": "1"
+      },
+      false: { "z-index": "-1" }
+    };
+
+    $scope.showTrailer = false;
     $scope.movie.vote_average = $scope.movie.vote_average / 2;
     $scope.movie.ratingStars = [];
     for (var i = 0; i < 5; i++) {
