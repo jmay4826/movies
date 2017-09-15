@@ -1,5 +1,5 @@
 angular
-  .module("movieApp", ["ui.router", "ngMaterial", "jkAngularCarousel"])
+  .module("movieApp", ["ui.router", "ngMaterial"])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
     $stateProvider

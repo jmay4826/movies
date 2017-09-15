@@ -8,9 +8,18 @@ angular
     $sce
   ) {
     $scope.movie = movie.data;
-    $scope.movie.videos.results[0].key = $sce.trustAsResourceUrl(
-      "https://www.youtube.com/embed/" + $scope.movie.videos.results[0].key
-    );
+    $scope.movie.videos.results = $scope.movie.videos.results.map(function(
+      video
+    ) {
+      video.key = $sce.trustAsResourceUrl(
+        "https://www.youtube.com/embed/" + video.key
+      );
+      return video;
+    });
+
+    // $scope.movie.videos.results[0].key = $sce.trustAsResourceUrl(
+    //   "https://www.youtube.com/embed/" + $scope.movie.videos.results[0].key
+    // );
     $scope.trailerStyle = {
       true: {
         "z-index": "1"

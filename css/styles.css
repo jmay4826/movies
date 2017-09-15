@@ -11,8 +11,14 @@
 
 .detail-hero {
   height: 500px;
+  width: 100%;
   background-size: cover;
   background-position: 50% 0%;
+}
+
+.detail-hero-container {
+  width: 100vw;
+  overflow: hidden;
 }
 
 .similar-bar {
@@ -39,9 +45,13 @@
 }
 
 .trailer {
-  position: absolute;
-  width: 100vw;
+  background: linear-gradient(to right, transparent, rgba(48, 48, 48, 0.85));
+  width: 5%;
   height: 500px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  overflow: hidden;
 }
 
 /* .recommendation img {
