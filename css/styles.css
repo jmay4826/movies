@@ -45,7 +45,7 @@
 }
 
 .trailer {
-  transition: all 200ms;
+  transition: all 500ms;
   background: linear-gradient(to right, transparent, rgba(48, 48, 48, 0.85));
   width: 5%;
   height: 500px;
@@ -53,11 +53,19 @@
   right: 0px;
   top: 0px;
   overflow: hidden;
+  cursor: pointer;
+  outline: none;
 }
 
 iframe {
+  margin-left: 25px;
   width: 100vw;
   height: 500px;
+}
+
+.arrow {
+  font-size: 50px !important;
+  margin: auto 0;
 }
 
 /* .recommendation img {

@@ -13,9 +13,9 @@
             </div>
         </div>
     </div>
-    <div layout="row" layout-align="space-between" class="trailer" ng-click="showTrailer=!showTrailer" ng-style="trailerStyle[showTrailer]">
-        <md-icon ng-show="!showTrailer" style="font-size: 50px">keyboard_arrow_left</md-icon>
-        <md-icon ng-show="showTrailer">keyboard_arrow_right</md-icon>
+    <div layout="row" class="trailer" ng-click="showTrailer=!showTrailer" ng-style="trailerStyle[showTrailer]">
+        <md-icon class="arrow" ng-show="!showTrailer">keyboard_arrow_left</md-icon>
+        <md-icon class="arrow" ng-show="showTrailer">keyboard_arrow_right</md-icon>
         <iframe type="text/html" ng-src="{{movie.videos.results[0].key}}" frameborder="0" flex="90"></iframe>
     </div>
 </div>

@@ -5,7 +5,8 @@ angular
     searchService,
     movie,
     $stateParams,
-    $sce
+    $sce,
+    $timeout
   ) {
     $scope.movie = movie.data;
     $scope.movie.videos.results = $scope.movie.videos.results.map(function(
@@ -17,9 +18,6 @@ angular
       return video;
     });
 
-    // $scope.movie.videos.results[0].key = $sce.trustAsResourceUrl(
-    //   "https://www.youtube.com/embed/" + $scope.movie.videos.results[0].key
-    // );
     $scope.trailerStyle = {
       true: {
         width: "100%",
@@ -27,7 +25,7 @@ angular
         background: "rgb(48,48,48)"
       },
       false: { width: "5%", top: "0px", right: "0px" },
-      hover: { width: "10%" }
+      hover: { width: "20%", content: "View Trailer" }
     };
 
     $scope.showTrailer = false;
