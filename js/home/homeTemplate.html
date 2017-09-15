@@ -1,20 +1,23 @@
-<div class="hero" layout="column" layout-align="space-between">
-    <div>
-        <h1>I want to watch a movie.</h1>
-        <h2>Find one.
-            <md-button ui-sref="personalize">Personalize it.</md-button>
-        </h2>
-        <div layout="row" layout-align="center">
-
-        </div>
-    </div>
-    <div class="text-center">
-        <h2>Most Popular</h2>
-        <md-button class="md-fab" ng-click="scrollToRecommendations()">
-            <md-icon>&#xE313;</md-icon>
-        </md-button>
-    </div>
+<iframe class="home-video" type="text/html" src="https://www.youtube.com/embed/PjfP2tmjtQM?autoplay=1&start=19&showinfo=0&modestbranding=1&controls=0"
+    frameborder="0">
+</iframe>
+<div style="top: 0px; left: 0px; position: absolute; height: 56vw; width: 100vw; z-index: 2; background: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.6) 70%, rgba(48,48, 48, 1))">
+    <h1>I want to watch a movie.</h1>
+    <h2>Find one.
+        <md-button ui-sref="personalize">Personalize it.</md-button>
+    </h2>
+    <md-button class="md-fab" ng-click="scrollToRecommendations()">
+        <md-icon>keyboard_arrow_down</md-icon>
+    </md-button>
 </div>
+<div>
+
+</div>
+<div class="text-center">
+    <h2>Most Popular</h2>
+
+</div>
+
 <div layout="row" layout-align="space-around" layout-wrap id="recommendation-container">
     <recommendation-card ng-repeat="movie in popular" movie="movie" flex="30" flex-sm="40" flex-xs="80"></recommendation-card>
 </div>
