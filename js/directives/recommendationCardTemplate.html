@@ -3,7 +3,7 @@
     <md-card-title>
         <md-card-title-text>
             <div class="md-headline">{{movie.title}}</div>
-            <span ui-sref="detail({id: movie.id})" class="md-subhead" style="cursor: pointer; padding: 0;">(go to details)</span>
+            <span class="md-subhead" style="padding: 0; color: #9B9B9B; letter-spacing: 0.75pt">{{genres[movie.genre_ids[0]] | uppercase }}</span>
             <span class="md-subhead" ng-show="movie.recommendation" style="padding: 0">because you liked: {{movie.likedGenre}}</span>
             <span></span>
             <div layout="column" ng-show="movie.dummy">
@@ -15,12 +15,12 @@
     <md-card-actions layout="row" layout-align="space-between center" ng-show="showActions">
         <md-button class="md-warn" style="width: 100%" ng-click="action({choice: 'no', movieId: index})">
             <md-icon>
-                &#xE8DB;
+                thumb_down
             </md-icon>
         </md-button>
         <md-button class="md-accent" style="width: 100%" ng-click="action({choice: 'yes', movieId: index})">
             <md-icon>
-                &#xE8DC;
+                thumb_up
             </md-icon>
         </md-button>
     </md-card-actions>

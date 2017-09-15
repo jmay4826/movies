@@ -1,14 +1,17 @@
-<iframe class="home-video" type="text/html" src="https://www.youtube.com/embed/PjfP2tmjtQM?autoplay=1&start=19&showinfo=0&modestbranding=1&controls=0"
+<iframe hide-xs class="home-video" type="text/html" src="https://www.youtube.com/embed/PjfP2tmjtQM?autoplay=1&start=19&showinfo=0&modestbranding=1&controls=0"
     frameborder="0">
 </iframe>
-<div style="top: 0px; left: 0px; position: absolute; height: 56vw; width: 100vw; z-index: 2; background: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.6) 70%, rgba(48,48, 48, 1))">
-    <h1>I want to watch a movie.</h1>
-    <h2>Find one.
-        <md-button ui-sref="personalize">Personalize it.</md-button>
-    </h2>
-    <md-button class="md-fab" ng-click="scrollToRecommendations()">
-        <md-icon>keyboard_arrow_down</md-icon>
-    </md-button>
+<div hide-gt-xs class="home-video home-video-static"></div>
+<div class="overlay" layout="column" layout-align="space-between center">
+    <div style="margin-top: 20%; text-align: center">
+        <h1 style="font-size: 4em; text-shadow: 1px 1px 4px rgba(0,0,0,0.4)">Want to watch a movie?</h1>
+        <h2>Check out our recommendations.</h2>
+        <md-button class="md-fab" ng-click="scrollToRecommendations()">
+            <md-icon>keyboard_arrow_down</md-icon>
+        </md-button>
+    </div>
+
+
 </div>
 <div>
 
@@ -19,5 +22,7 @@
 </div>
 
 <div layout="row" layout-align="space-around" layout-wrap id="recommendation-container">
-    <recommendation-card ng-repeat="movie in popular" movie="movie" flex="30" flex-sm="40" flex-xs="80"></recommendation-card>
+    <div ng-repeat="movie in popular" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
+        <recommendation-card movie="movie" genres="genres"></recommendation-card>
+    </div>
 </div>

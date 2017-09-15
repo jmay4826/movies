@@ -8,6 +8,7 @@ angular
       $scope.imageBaseUrl = searchService.imageBaseUrl;
       $scope.imageSize = searchService.imageSize;
     });
+    $scope.genres = searchService.genres;
 
     searchService
       .findMoviesBy("popular")

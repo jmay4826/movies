@@ -3,8 +3,10 @@
         layout-align="end">
         <div layout="row" layout-align="space-between end">
             <div>
-                <h1><span style="background-color: black">{{movie.title}}</span></h1>
-                <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
+                <h1 class="movie-info">{{movie.title}}</h1>
+
+                <h2 class="movie-info">"{{movie.tagline}}"</h2>
+
             </div>
             <div>
                 <md-chips ng-model="movie.genres" readonly="true">

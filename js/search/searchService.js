@@ -20,7 +20,8 @@ angular.module("movieApp").service("searchService", function($http) {
     10402: "Music",
     9648: "Mystery",
     10749: "Romance",
-    878: "Science Fiction"
+    878: "Science Fiction",
+    53: "Thriller"
   };
 
   this.apiConfiguration = function() {
@@ -48,7 +49,13 @@ angular.module("movieApp").service("searchService", function($http) {
 
   this.discover = function(options, extra) {
     return $http
-      .get(apiUrl + "discover/movie" + apiKey + options)
+      .get(
+        apiUrl +
+          "discover/movie" +
+          apiKey +
+          options +
+          "&primary_release_date.lte=2017-08-01"
+      )
       .then(function(response) {
         if (extra) {
           response.data.results = response.data.results.map(function(movie) {

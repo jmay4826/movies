@@ -8,7 +8,8 @@ angular
         movie: "=",
         showActions: "=",
         action: "&",
-        index: "="
+        index: "=",
+        genres: "="
       },
       link: function(scope, elements, attributes) {
         scope.imageBaseUrl = searchService.imageBaseUrl;
