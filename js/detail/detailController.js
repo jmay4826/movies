@@ -22,9 +22,12 @@ angular
     // );
     $scope.trailerStyle = {
       true: {
-        "z-index": "1"
+        width: "100%",
+        left: "0px;",
+        background: "rgb(48,48,48)"
       },
-      false: { "z-index": "-1" }
+      false: { width: "5%", top: "0px", right: "0px" },
+      hover: { width: "10%" }
     };
 
     $scope.showTrailer = false;

@@ -1,7 +1,7 @@
 <div class="detail-hero-container">
     <div class="detail-hero" ng-style="{'background-image': 'url({{imageBaseUrl + imageSize + movie.backdrop_path}})'}" layout="column"
         layout-align="end">
-        <div layout="row" layout-align="space-between end" ng-style="trailerStyle[!showTrailer]">
+        <div layout="row" layout-align="space-between end">
             <div>
                 <h1><span style="background-color: black">{{movie.title}}</span></h1>
                 <h2><span style="background-color: black">"{{movie.tagline}}"</span></h2>
@@ -13,11 +13,13 @@
             </div>
         </div>
     </div>
-    <div layout="row" class="trailer" ng-hover="showTrailer = 'hover'">
-        <md-icon ng-click="showTrailer=true">keyboard_arrow_right</md-icon>
-        <p>View Trailer</p>
+    <div layout="row" layout-align="space-between" class="trailer" ng-click="showTrailer=!showTrailer" ng-style="trailerStyle[showTrailer]">
+        <md-icon ng-show="!showTrailer" style="font-size: 50px">keyboard_arrow_left</md-icon>
+        <md-icon ng-show="showTrailer">keyboard_arrow_right</md-icon>
+        <iframe type="text/html" ng-src="{{movie.videos.results[0].key}}" frameborder="0" flex="90"></iframe>
     </div>
 </div>
+
 <div class="similar-bar">
     <md-button ng-click="getSimilar(movie.id)">Similar Movies</md-button>
 </div>
