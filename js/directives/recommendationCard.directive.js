@@ -3,7 +3,7 @@ angular
   .directive("recommendationCard", function(searchService) {
     return {
       restrict: "E",
-      templateUrl: "/js/directives/recommendationCardTemplate.html",
+      templateUrl: "js/directives/recommendationCardTemplate.html",
       scope: {
         movie: "=",
         showActions: "=",
