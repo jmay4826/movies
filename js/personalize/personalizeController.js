@@ -66,9 +66,9 @@ angular
       $scope.random[movieId].alreadyVoted = true;
       console.log($scope.random[movieId].alreadyVoted);
       if (choice === "yes") {
-        $scope.liked.push($scope.random[movieId]);
+        $scope.liked.unshift($scope.random[movieId]);
       } else {
-        $scope.disliked.push($scope.random[movieId]);
+        $scope.disliked.unshift($scope.random[movieId]);
       }
     };
 
