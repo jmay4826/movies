@@ -1,5 +1,5 @@
 angular
-  .module("movieApp", ["ui.router", "ngMaterial", "youtube-embed"])
+  .module("movieApp", ["ui.router", "ngMaterial", "youtube-embed", "duScroll"])
   .config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise("/");
     $stateProvider
