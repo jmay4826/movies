@@ -72,7 +72,7 @@
   top: -3px;
 }
 .home-video-static {
-  background-image: url("http://image.tmdb.org/t/p/w780/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg");
+  background-image: url("http://image.tmdb.org/t/p/w780/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
   background-size: cover;
 }
 .overlay {
@@ -87,6 +87,10 @@
     rgba(0, 0, 0, 0.7) 70%,
     rgba(48, 48, 48, 1)
   );
+}
+
+.static {
+  height: 75vh;
 }
 
 h1 {

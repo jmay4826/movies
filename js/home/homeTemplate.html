@@ -1,9 +1,9 @@
 <!-- <iframe hide-xs class="home-video" type="text/html" src="https://www.youtube.com/embed/PjfP2tmjtQM?autoplay=1&start=19&showinfo=0&modestbranding=1&controls=0" -->
 <!-- frameborder="0"> -->
 <!-- </iframe> -->
-<youtube-video class="home-video" play="homePlayer " player-vars="playerVars" video-id="defaultVideo"></youtube-video>
-<div hide-gt-xs class="home-video home-video-static"></div>
-<div class="overlay" layout="column" layout-align="space-between center">
+<youtube-video hide-xs class="home-video" play="homePlayer " player-vars="playerVars" video-id="defaultVideo"></youtube-video>
+<div hide-gt-xs class="home-video home-video-static static"></div>
+<div hide-xs class="overlay" layout="column" layout-align="space-between center">
     <div style="margin-top: 20%; text-align: center">
         <h1 style="font-size: 4em; text-shadow: 1px 1px 4px rgba(0,0,0,0.4)">Want to watch a movie?</h1>
         <h2>Check out our recommendations.</h2>
@@ -11,9 +11,17 @@
             <md-icon>keyboard_arrow_down</md-icon>
         </md-button>
     </div>
-
-
 </div>
+<div hide-gt-xs class="overlay static" layout="column" layout-align="space-between center">
+    <div style="margin-top: 20%; text-align: center">
+        <h1 style="font-size: 4em; text-shadow: 1px 1px 4px rgba(0,0,0,0.4)">Want to watch a movie?</h1>
+        <h2>Check out our recommendations.</h2>
+        <md-button href="#home-recommendations" class="md-fab" du-smooth-scroll>
+            <md-icon>keyboard_arrow_down</md-icon>
+        </md-button>
+    </div>
+</div>
+
 <div>
 
 </div>
