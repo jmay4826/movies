@@ -12,6 +12,7 @@ angular
       title: "Ready for your recommendation?",
       dummy: true
     };
+    $scope.genres = searchService.genres;
     $scope.recommendationAction = function(choice) {
       if (choice === "recommend") {
         var genres = personalizeService.getSimilarities(

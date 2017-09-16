@@ -3,7 +3,11 @@
     <md-card-title>
         <md-card-title-text>
             <div class="md-headline">{{movie.title}}</div>
-            <span class="md-subhead" style="padding: 0; color: #9B9B9B; letter-spacing: 0.75pt">{{genres[movie.genre_ids[0]] | uppercase }}</span>
+            <div layout="row" layout-align="space-between">
+                <span class="md-subhead" style="padding: 0; color: #9B9B9B; letter-spacing: 0.75pt">{{genres[movie.genre_ids[0]] | uppercase }}</span>
+                <span class="md-subhead" style="padding: 0; color: #9B9B9B; letter-spacing: 0.75pt">({{movie.vote_average / 2 | number: 1}}/5)</span>
+            </div>
+
             <span class="md-subhead" ng-show="movie.recommendation" style="padding: 0">because you liked: {{movie.likedGenre}}</span>
             <span></span>
             <div layout="column" ng-show="movie.dummy">

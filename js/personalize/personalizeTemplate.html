@@ -14,7 +14,7 @@
         flex-xs="90">
 
         <recommendation-card ng-repeat="movie in random track by $index " index="$index
-            " movie="movie " show-actions="showActions " action="cardAction(choice, movieId) " ng-hide="movie.alreadyVoted">
+            " movie="movie " genres="genres" show-actions="showActions " action="cardAction(choice, movieId) " ng-hide="movie.alreadyVoted">
         </recommendation-card>
 
         <recommendation-card movie="recommendedMovie" ng-show="(liked.length + disliked.length) > 19" action="recommendationAction(choice)"></recommendation-card>

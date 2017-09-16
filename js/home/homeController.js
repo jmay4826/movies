@@ -17,9 +17,9 @@ angular
       modestbranding: 1,
       playsInline: 1,
       showinfo: 0,
-      start: 18
+      start: 19
     };
-    $scope.$on("youtube.player.ready", function($event, player) {
+    $scope.$on("youtube.player.playing", function($event, player) {
       player.mute();
     });
     // $scope.homePlayer.mute();
