@@ -26,12 +26,42 @@
 
 </div>
 <div id="home-recommendations">
-    <h2>Most Popular</h2>
-
 </div>
-
-<div layout="row" layout-align="space-around" layout-wrap id="recommendation-container">
-    <div ng-repeat="movie in popular" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
-        <recommendation-card movie="movie" genres="genres"></recommendation-card>
-    </div>
+<!-- TODO: Clicking scroll button and switching tabs causes scroll position to change....sometimes -->
+<div ng-cloak>
+    <md-content>
+        <md-tabs md-center-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="most popular">
+                <md-content class="md-padding">
+                    <div layout="row" layout-align="space-around" layout-wrap>
+                        <div ng-repeat="movie in popular" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
+                            <recommendation-card movie="movie" genres="genres"></recommendation-card>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="top rated">
+                <md-content class="md-padding">
+                    <div layout="row" layout-align="space-around" layout-wrap>
+                        <div ng-repeat="movie in topRated" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
+                            <recommendation-card movie="movie" genres="genres"></recommendation-card>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+            <md-tab label="just for you">
+                <md-content class="md-padding" style="min-height: 300px">
+                    <div layout="row" layout-align="space-around" layout-wrap>
+                        <div ng-show="personalized" ng-repeat="movie in personalized" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
+                            <recommendation-card movie="movie" genres="genres"></recommendation-card>
+                        </div>
+                        <div ng-hide="personlized" style="text-align: center">
+                            <h2>Feeling special?</h2>
+                            <md-button href="#top" du-smooth-scroll ui-sref="personalize">Personalize your recommendations</md-button>
+                        </div>
+                    </div>
+                </md-content>
+            </md-tab>
+        </md-tabs>
+    </md-content>
 </div>

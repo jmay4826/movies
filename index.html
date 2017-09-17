@@ -12,7 +12,15 @@
 </head>
 
 <body>
+    <div id="top"></div>
     <ui-view></ui-view>
+    <md-divider></md-divider>
+    <footer>
+        <span class="md-subhead">
+            This product uses the TMDb API but is not endorsed or certified by TMDB.
+        </span>
+        <img src="images/tmdb.svg" alt="Powered by The Movie Database API" style="width: 100px">
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular-animate.min.js"></script>

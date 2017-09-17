@@ -42,14 +42,14 @@ angular
           searchService
             .discover(
               "&primary_release_date.lte=2017-04-01&with_genres=" +
-                mostImportant.content +
-                "|" +
-                secondImportant.content
+                mostImportant.content
             )
             .then(function(response) {
+              personalizeService.recommended = repsone.data.results;
               response = response.data.results.filter(function(movie) {
                 return $scope.randomIds.indexOf(movie.id) === -1;
               });
+
               $scope.recommendedMovie = response[0];
               $scope.recommendedMovie.likedGenre =
                 searchService.genres[mostImportant.content];

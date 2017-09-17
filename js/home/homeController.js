@@ -1,9 +1,12 @@
 angular
   .module("movieApp")
-  .controller("homeController", function($scope, $anchorScroll, searchService) {
-    $scope.scrollToRecommendations = function() {
-      $anchorScroll("recommendation-container");
-    };
+  .controller("homeController", function(
+    $scope,
+    $anchorScroll,
+    searchService,
+    personalizeService
+  ) {
+    $scope.personalized = personalizeService.recommended;
     searchService.apiConfiguration().then(function() {
       $scope.imageBaseUrl = searchService.imageBaseUrl;
       $scope.imageSize = searchService.imageSize;
@@ -28,6 +31,17 @@ angular
       .then(function(response) {
         console.log(response.data);
         $scope.popular = response.data.results;
+        return response;
+      })
+      .catch(function(error) {
+        console.log(error);
+        return error;
+      });
+    searchService
+      .findMoviesBy("top_rated")
+      .then(function(response) {
+        console.log(response.data);
+        $scope.topRated = response.data.results;
         return response;
       })
       .catch(function(error) {

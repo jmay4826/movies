@@ -75,6 +75,13 @@
   background-image: url("http://image.tmdb.org/t/p/w780/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg");
   background-size: cover;
 }
+footer {
+  padding: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .overlay {
   top: 0px;
   left: 0px;
