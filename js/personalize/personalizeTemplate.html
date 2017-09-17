@@ -18,8 +18,15 @@
         <recommendation-card ng-show="$index===0" ng-repeat="movie in random track by movie.id " index="$index
             " movie="movie " genres="genres" show-actions="showActions " action="cardAction(choice, movie) ">
         </recommendation-card>
-        <recommendation-card movie="recommendedMovie" ng-show="(liked.length + disliked.length) > 19" action="recommendationAction(choice)"></recommendation-card>
-
+        <md-card ng-hide="random.length">
+            <md-card-title>
+                <md-card-title-text>
+                    <div class="md-headline">Ready for your recommendations?</div>
+                    <md-button ng-click="action({choice: 'recommend'})">Recommend</md-button>
+                    <!-- <md-button ng-click="action({choice: 'personalize'})">Keep personalizing.</md-button> -->
+                </md-card-title-text>
+            </md-card-title>
+        </md-card>
     </div>
 
     <div hide-xs layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
