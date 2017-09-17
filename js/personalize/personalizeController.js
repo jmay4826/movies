@@ -49,11 +49,10 @@ angular
               mostImportant.content
           )
           .then(function(response) {
-            personalizeService.recommended = response.data.results;
             response = response.data.results.filter(function(movie) {
               return $scope.randomIds.indexOf(movie.id) === -1;
             });
-
+            personalizeService.recommended = response;
             $scope.recommended = response;
             $scope.recommendedMovie.likedGenre =
               searchService.genres[mostImportant.content];
