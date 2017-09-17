@@ -24,6 +24,9 @@ angular
         templateUrl: "js/personalize/personalizeTemplate.html",
         controller: "personalizeController",
         resolve: {
+          scroll: function($document) {
+            $document.scrollTop();
+          },
           random: function(searchService) {
             return searchService
               .discover("&vote_average.gte=4.9", true)
