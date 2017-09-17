@@ -1,11 +1,3 @@
-.hero {
-  height: 90vh;
-}
-
-.text-center {
-  text-align: center;
-}
-
 .movie-info {
   display: inline-block;
   background-color: rgba(0, 0, 0, 0.5);
@@ -113,31 +105,3 @@ iframe {
   font-size: 50px !important;
   margin: auto 30px auto 0;
 }
-
-/* .recommendation img {
-  width: 25%;
-} */
-/*
-.flex-container {
-  position: relative;
-  z-index: 10;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: center;
-}
-.background-images {
-  position: absolute;
-  top: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index: 0;
-  overflow: hidden;
-}
-.background-images img {
-  vertical-align: top;
-  width: 33vw;
-  padding: 0;
-  margin: 0;
-} */
