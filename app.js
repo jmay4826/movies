@@ -55,7 +55,12 @@ angular
       .state("recommendations", {
         url: "/recommendations",
         templateUrl: "js/recommendations/recommendationsTemplate.html",
-        controller: "recommendationsController"
+        controller: "recommendationsController",
+        resolve: {
+          apiConfig: function(searchService) {
+            return searchService.apiConfiguration();
+          }
+        }
       });
   })
   .config(function($mdThemingProvider) {

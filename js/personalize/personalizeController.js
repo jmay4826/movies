@@ -11,8 +11,6 @@ angular
     $scope.imageBaseUrl = searchService.imageBaseUrl;
     $scope.imageSize = searchService.imageSize;
 
-    $document.scrollTopAnimated();
-
     $scope.recommendedMovie = {
       title: "Ready for your recommendation?",
       dummy: true
@@ -30,7 +28,6 @@ angular
         $scope.disliked
       );
 
-      console.log(genres, cast);
       var mostImportant = { amount: -100, content: "" };
       var secondImportant = { amount: -100, content: "" };
       for (var key in genres) {
@@ -42,45 +39,53 @@ angular
           secondImportant.content = key;
         }
       }
-      console.log(
-        searchService
-          .discover(
-            "&primary_release_date.lte=2017-07-01&with_genres=" +
-              mostImportant.content
-          )
-          .then(function(response) {
-            response = response.data.results.filter(function(movie) {
-              return $scope.randomIds.indexOf(movie.id) === -1;
-            });
-            personalizeService.recommended = response;
-            $scope.recommended = response;
-            $scope.recommendedMovie.likedGenre =
-              searchService.genres[mostImportant.content];
-            $scope.recommendedMovie.recommendation = true;
-            $state.go("recommendations");
-          })
-      );
-      console.log(mostImportant);
+      searchService
+        .discover(
+          "&primary_release_date.lte=2017-07-01&with_genres=" +
+            mostImportant.content
+        )
+        .then(function(response) {
+          response = response.data.results.filter(function(movie) {
+            return $scope.randomIds.indexOf(movie.id) === -1;
+          });
+          personalizeService.recommended = response;
+          localStorage.setItem(
+            "recommended",
+            JSON.stringify(personalizeService.recommended)
+          );
+          $scope.recommended = response;
+          $scope.recommendedMovie.likedGenre =
+            searchService.genres[mostImportant.content];
+          $scope.recommendedMovie.recommendation = true;
+          $state.go("recommendations");
+        });
     };
     $scope.showActions = true;
-    $scope.liked = [];
-    $scope.disliked = [];
+    $scope.liked = JSON.parse(localStorage.getItem("liked")) || [];
+    $scope.disliked = JSON.parse(localStorage.getItem("disliked")) || [];
     $scope.cardAction = function(choice, movie) {
       if (choice === "yes") {
         $scope.liked.unshift(movie);
+        localStorage.setItem("liked", JSON.stringify($scope.liked));
       } else {
         $scope.disliked.unshift(movie);
+        localStorage.setItem("disliked", JSON.stringify($scope.disliked));
       }
       $scope.random.shift();
+      localStorage.setItem("random", JSON.stringify($scope.random));
     };
 
     $scope.getSimilarities = function(type, liked, disliked) {
       personalizeService.getSimilarities(type, liked, disliked);
     };
 
-    $scope.random = random.data.results;
-    $scope.randomIds = $scope.random.map(function(movie) {
-      return movie.id;
-    });
+    $scope.random =
+      JSON.parse(localStorage.getItem("random")) || random.data.results;
+    $scope.randomIds =
+      JSON.parse(localStorage.getItem("randomIds")) ||
+      $scope.random.map(function(movie) {
+        return movie.id;
+      });
+    localStorage.setItem("randomIds", JSON.stringify($scope.randomIds));
     console.log($scope.randomIds);
   });

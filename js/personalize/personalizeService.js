@@ -1,4 +1,5 @@
 angular.module("movieApp").service("personalizeService", function() {
+  this.recommended = JSON.parse(localStorage.getItem("recommended"));
   this.getSimilarities = function(type, liked, disliked) {
     var likesToAnalyze = liked.map(function(movie) {
       return movie[type];

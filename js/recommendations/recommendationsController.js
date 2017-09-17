@@ -2,10 +2,12 @@ angular
   .module("movieApp")
   .controller("recommendationsController", function(
     $scope,
-    searchService,
-    personalizeService,
-    $document
+    $state,
+    personalizeService
   ) {
     $scope.recommended = personalizeService.recommended;
-    $scope.test = "rec test";
+    $scope.removeLocalStorage = function() {
+      localStorage.clear();
+      $state.go("personalize");
+    };
   });

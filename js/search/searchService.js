@@ -29,10 +29,8 @@ angular.module("movieApp").service("searchService", function($http) {
       .get(apiUrl + "configuration" + apiKey)
       .then(function(response) {
         that.imageBaseUrl = response.data.images.base_url;
-        console.log(that.imageBaseUrl);
+
         that.imageSize = response.data.images.backdrop_sizes[1];
-        console.log(that.imageSize);
-        // console.log(response);
       });
   };
   this.findMoviesBy = function(selector) {
@@ -59,7 +57,6 @@ angular.module("movieApp").service("searchService", function($http) {
       .then(function(response) {
         if (extra) {
           response.data.results = response.data.results.map(function(movie) {
-            // console.log(movie);
             $http
               .get(apiUrl + "movie/" + movie.id + "/credits" + apiKey)
               .then(function(detailResponse) {
@@ -69,10 +66,7 @@ angular.module("movieApp").service("searchService", function($http) {
                     movie.cast.push(detailResponse.data.cast[i].name);
                   }
                 }
-                // movie.cast = detailResponse.data.cast.map(function(actor) {
-                //   return actor.name;
-                // });
-                console.log(movie.cast);
+
                 return detailResponse;
               });
             return movie;
