@@ -1,9 +1,12 @@
+<div ng-show="recommended" style="text-align: center">
+    <h1>Here's what we think you'd like.</h1>
+</div>
 <div class="recommendations" layout="row" layout-align="space-around" layout-wrap>
     <div ng-repeat="movie in recommended track by movie.id" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
         <recommendation-card index="$index" movie="movie" genres="genres"></recommendation-card>
     </div>
 </div>
-<div ng-hide="recommendations" style="text-align: center">
+<div ng-hide="recommended" style="text-align: center">
     <h2>Feeling special?</h2>
     <md-button href="#top" du-smooth-scroll ui-sref="personalize">Personalize your recommendations</md-button>
 </div>
