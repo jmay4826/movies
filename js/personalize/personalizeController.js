@@ -45,16 +45,16 @@ angular
         console.log(
           searchService
             .discover(
-              "&primary_release_date.lte=2017-04-01&with_genres=" +
+              "&primary_release_date.lte=2017-07-01&with_genres=" +
                 mostImportant.content
             )
             .then(function(response) {
-              personalizeService.recommended = repsone.data.results;
+              personalizeService.recommended = response.data.results;
               response = response.data.results.filter(function(movie) {
                 return $scope.randomIds.indexOf(movie.id) === -1;
               });
 
-              $scope.recommendedMovie = response[0];
+              $scope.recommended = response;
               $scope.recommendedMovie.likedGenre =
                 searchService.genres[mostImportant.content];
               $scope.recommendedMovie.recommendation = true;
@@ -67,14 +67,13 @@ angular
     $scope.showActions = true;
     $scope.liked = [];
     $scope.disliked = [];
-    $scope.cardAction = function(choice, movieId) {
-      $scope.random[movieId].alreadyVoted = true;
-      console.log($scope.random[movieId].alreadyVoted);
+    $scope.cardAction = function(choice, movie) {
       if (choice === "yes") {
-        $scope.liked.unshift($scope.random[movieId]);
+        $scope.liked.unshift(movie);
       } else {
-        $scope.disliked.unshift($scope.random[movieId]);
+        $scope.disliked.unshift(movie);
       }
+      $scope.random.shift();
     };
 
     $scope.getSimilarities = function(type, liked, disliked) {

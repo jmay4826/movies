@@ -2,6 +2,11 @@
     <!-- <h1>We know you're special.</h1> -->
     <!-- <h2>Get recommendations just for you.</h2> -->
 </div>
+<div class="recommendations" ng-show="recommended" layout="row" layout-align="space-around" layout-wrap>
+    <div ng-repeat="movie in recommended track by movie.id" flex="30" flex-sm="40" flex-xs="80" ui-sref="detail({id: movie.id})">
+        <recommendation-card index="$index" movie="movie" genres="genres"></recommendation-card>
+    </div>
+</div>
 <div layout="row" layout-align="space-around start" layout-margin>
     <div hide-xs layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
         <h2>Disliked</h2>
@@ -10,16 +15,16 @@
     </div>
     <div style="position: relative" layout="row" layout-align="space-around" layout-wrap id="recommendation-container" flex="50"
         flex-xs="90">
-        <recommendation-card ng-repeat="movie in random track by $index " index="$index
-            " movie="movie " genres="genres" show-actions="showActions " action="cardAction(choice, movieId) " ng-hide="movie.alreadyVoted">
+        <recommendation-card ng-show="$index===0" ng-repeat="movie in random track by movie.id " index="$index
+            " movie="movie " genres="genres" show-actions="showActions " action="cardAction(choice, movie) ">
         </recommendation-card>
-
-
         <recommendation-card movie="recommendedMovie" ng-show="(liked.length + disliked.length) > 19" action="recommendationAction(choice)"></recommendation-card>
+
     </div>
+
     <div hide-xs layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
         <h2>Liked</h2>
-        <recommendation-card hide-xs ng-repeat="movie in liked track by $index" index="$index " movie="movie
+        <recommendation-card hide-xs ng-repeat="movie in liked track by movie.id" index="$index " movie="movie
         " show-actions=" "></recommendation-card>
 
     </div>
