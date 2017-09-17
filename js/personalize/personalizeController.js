@@ -5,7 +5,8 @@ angular
     searchService,
     random,
     personalizeService,
-    $document
+    $document,
+    $state
   ) {
     $scope.imageBaseUrl = searchService.imageBaseUrl;
     $scope.imageSize = searchService.imageSize;
@@ -17,52 +18,50 @@ angular
       dummy: true
     };
     $scope.genres = searchService.genres;
-    $scope.recommendationAction = function(choice) {
-      if (choice === "recommend") {
-        var genres = personalizeService.getSimilarities(
-          "genre_ids",
-          $scope.liked,
-          $scope.disliked
-        );
-        var cast = personalizeService.getSimilarities(
-          "cast",
-          $scope.liked,
-          $scope.disliked
-        );
+    $scope.recommend = function() {
+      var genres = personalizeService.getSimilarities(
+        "genre_ids",
+        $scope.liked,
+        $scope.disliked
+      );
+      var cast = personalizeService.getSimilarities(
+        "cast",
+        $scope.liked,
+        $scope.disliked
+      );
 
-        console.log(genres, cast);
-        var mostImportant = { amount: -100, content: "" };
-        var secondImportant = { amount: -100, content: "" };
-        for (var key in genres) {
-          if (genres[key] > mostImportant.amount) {
-            mostImportant.amount = genres[key];
-            mostImportant.content = key;
-          } else if (genres[key] > secondImportant.amount) {
-            secondImportant.amount = genres[key];
-            secondImportant.content = key;
-          }
+      console.log(genres, cast);
+      var mostImportant = { amount: -100, content: "" };
+      var secondImportant = { amount: -100, content: "" };
+      for (var key in genres) {
+        if (genres[key] > mostImportant.amount) {
+          mostImportant.amount = genres[key];
+          mostImportant.content = key;
+        } else if (genres[key] > secondImportant.amount) {
+          secondImportant.amount = genres[key];
+          secondImportant.content = key;
         }
-        console.log(
-          searchService
-            .discover(
-              "&primary_release_date.lte=2017-07-01&with_genres=" +
-                mostImportant.content
-            )
-            .then(function(response) {
-              personalizeService.recommended = response.data.results;
-              response = response.data.results.filter(function(movie) {
-                return $scope.randomIds.indexOf(movie.id) === -1;
-              });
-
-              $scope.recommended = response;
-              $scope.recommendedMovie.likedGenre =
-                searchService.genres[mostImportant.content];
-              $scope.recommendedMovie.recommendation = true;
-            })
-        );
-        console.log(mostImportant);
-      } else if (choice === "personalize") {
       }
+      console.log(
+        searchService
+          .discover(
+            "&primary_release_date.lte=2017-07-01&with_genres=" +
+              mostImportant.content
+          )
+          .then(function(response) {
+            personalizeService.recommended = response.data.results;
+            response = response.data.results.filter(function(movie) {
+              return $scope.randomIds.indexOf(movie.id) === -1;
+            });
+
+            $scope.recommended = response;
+            $scope.recommendedMovie.likedGenre =
+              searchService.genres[mostImportant.content];
+            $scope.recommendedMovie.recommendation = true;
+            $state.go("recommendations");
+          })
+      );
+      console.log(mostImportant);
     };
     $scope.showActions = true;
     $scope.liked = [];

@@ -121,12 +121,14 @@ iframe {
   opacity: 1;
 }
 
-.ng-leave-active,
-.ng-move-active {
+.ng-leave-active {
   opacity: 0;
   max-height: 0;
 }
 
+.ng-move-active {
+  opacity: 0;
+}
 .ng-hide {
   opacity: 0;
   max-height: 10px;
