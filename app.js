@@ -51,6 +51,11 @@ angular
             return searchService.apiConfiguration();
           }
         }
+      })
+      .state("recommendations", {
+        url: "/recommendations",
+        templateUrl: "js/recommendations/recommendationsTemplate.html",
+        controller: "recommendationsController"
       });
   })
   .config(function($mdThemingProvider) {

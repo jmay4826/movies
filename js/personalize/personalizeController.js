@@ -31,8 +31,8 @@ angular
         );
 
         console.log(genres, cast);
-        var mostImportant = { amount: 0, content: "" };
-        var secondImportant = { amount: 0, content: "" };
+        var mostImportant = { amount: -100, content: "" };
+        var secondImportant = { amount: -100, content: "" };
         for (var key in genres) {
           if (genres[key] > mostImportant.amount) {
             mostImportant.amount = genres[key];
