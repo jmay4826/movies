@@ -1,8 +1,6 @@
 <div>
-    <h1>Personalize your recommendations.</h1>
-    <h2>Do you like this movie?</h2>
-    <!-- <md-button ng-click="getSimilarities('cast', liked, disliked)">Similar Actors</md-button> -->
-    <!-- <md-button ng-click="getSimilarities('genre_ids', liked, disliked)">Similar Genres</md-button> -->
+    <!-- <h1>We know you're special.</h1> -->
+    <!-- <h2>Get recommendations just for you.</h2> -->
 </div>
 <div layout="row" layout-align="space-around start" layout-margin>
     <div hide-xs layout="column" layout-align="space-around" id="disliked" flex="25" style="text-align: center">
@@ -12,10 +10,10 @@
     </div>
     <div style="position: relative" layout="row" layout-align="space-around" layout-wrap id="recommendation-container" flex="50"
         flex-xs="90">
-
         <recommendation-card ng-repeat="movie in random track by $index " index="$index
             " movie="movie " genres="genres" show-actions="showActions " action="cardAction(choice, movieId) " ng-hide="movie.alreadyVoted">
         </recommendation-card>
+
 
         <recommendation-card movie="recommendedMovie" ng-show="(liked.length + disliked.length) > 19" action="recommendationAction(choice)"></recommendation-card>
     </div>

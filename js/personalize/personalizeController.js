@@ -4,10 +4,14 @@ angular
     $scope,
     searchService,
     random,
-    personalizeService
+    personalizeService,
+    $document
   ) {
     $scope.imageBaseUrl = searchService.imageBaseUrl;
     $scope.imageSize = searchService.imageSize;
+
+    $document.scrollTopAnimated();
+
     $scope.recommendedMovie = {
       title: "Ready for your recommendation?",
       dummy: true
