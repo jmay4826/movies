@@ -3,8 +3,10 @@ angular
   .controller("recommendationsController", function(
     $scope,
     $state,
-    personalizeService
+    personalizeService,
+    searchService
   ) {
+    $scope.genres = searchService.genres;
     $scope.recommended = personalizeService.recommended;
     $scope.removeLocalStorage = function() {
       localStorage.clear();
