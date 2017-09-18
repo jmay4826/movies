@@ -87,5 +87,4 @@ angular
         return movie.id;
       });
     localStorage.setItem("randomIds", JSON.stringify($scope.randomIds));
-    console.log($scope.randomIds);
   });

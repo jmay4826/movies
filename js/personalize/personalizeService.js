@@ -47,10 +47,6 @@ angular.module("movieApp").service("personalizeService", function() {
       likeDifference[key] =
         (duplicateLikes[key] || 0) - (duplicateDislikes[key] || 0);
     }
-
-    console.log(duplicateDislikes);
-    console.log(duplicateLikes);
-    console.log(likeDifference);
     return likeDifference;
   };
 });

@@ -43,7 +43,7 @@ angular
         $scope.movie.ratingStars[i] = "star_border";
       }
     }
-    console.log($scope.movie);
+
     $scope.imageBaseUrl = searchService.imageBaseUrl;
     $scope.imageSize = searchService.imageSize;
 
@@ -51,7 +51,6 @@ angular
     if (!$scope.similar) {
       searchService.getSimilar($stateParams.id).then(function(response) {
         $scope.similar = response.data.results;
-        console.log($scope.similar);
       });
     }
 
@@ -63,16 +62,4 @@ angular
         $scope.scrollerStyle = { height: "0px" };
       }
     };
-
-    // searchService
-    //   .findMoviesBy("popular")
-    //   .then(function(response) {
-    //     console.log(response.data);
-    //     $scope.popular = response.data.results;
-    //     return response;
-    //   })
-    //   .catch(function(error) {
-    //     console.log(error);
-    //     return error;
-    //   });
   });

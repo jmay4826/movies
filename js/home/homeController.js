@@ -25,27 +25,23 @@ angular
     $scope.$on("youtube.player.playing", function($event, player) {
       player.mute();
     });
-    // $scope.homePlayer.mute();
+
     searchService
       .findMoviesBy("popular")
       .then(function(response) {
-        console.log(response.data);
         $scope.popular = response.data.results;
         return response;
       })
       .catch(function(error) {
-        console.log(error);
         return error;
       });
     searchService
       .findMoviesBy("top_rated")
       .then(function(response) {
-        console.log(response.data);
         $scope.topRated = response.data.results;
         return response;
       })
       .catch(function(error) {
-        console.log(error);
         return error;
       });
   });
