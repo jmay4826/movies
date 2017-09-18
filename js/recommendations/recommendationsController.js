@@ -10,6 +10,7 @@ angular
     $scope.recommended = personalizeService.recommended;
     $scope.removeLocalStorage = function() {
       localStorage.clear();
+      personalizeService.recommended = [];
       $state.go("personalize");
     };
   });
