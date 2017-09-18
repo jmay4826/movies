@@ -48,9 +48,8 @@
                     </md-content>
                 </md-tab>
                 <md-tab label="reviews">
-                    <md-content class="md-padding">
+                    <md-content class="md-padding" layout="column" layout-align="center center">
                         <div layout="column" layout-align="center center">
-                            <!-- <md-progress-circular md-mode="determinate" value="{{(movie.vote_average / 10) * 100}}"></md-progress-circular> -->
                             <div><span class="md-display-2">{{movie.vote_average}}</span><span class="md-subhead">/5</span></div>
                             <div style="padding: 0">
                                 <md-icon ng-repeat="star in movie.ratingStars track by $index">{{star}}</md-icon>
@@ -62,12 +61,15 @@
 
 
                         </div>
-                        <md-card ng-repeat="review in movie.reviews.results ">
-                            <md-card-title>{{review.author}}</md-card-title>
-                            <md-card-content>
-                                {{review.content}}
-                            </md-card-content>
-                        </md-card>
+                        <div style="width: 80%">
+                            <md-card ng-repeat="review in movie.reviews.results " ng-init="limit=140">
+                                <md-card-title>{{review.author}}</md-card-title>
+                                <md-card-content>
+                                    {{review.content | limitTo: limit}}<span ng-show="limit < review.content.length">...</span>
+                                </md-card-content>
+                                <md-button ng-show="limit < review.content.length" ng-click="limit = review.content.length">Read more...</md-button>
+                            </md-card>
+                        </div>
                     </md-content>
                 </md-tab>
             </md-tabs>
